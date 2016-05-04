@@ -11,7 +11,7 @@ You can use SimpleHtmlElement by putting the following line into your composer.j
 ```
     {
         "require": {
-            "derxen/SimpleHtmlElement": "~1.0"
+            "derxen/simple-html-element": "~1.0"
         }
     }
 ```
