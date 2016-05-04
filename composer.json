@@ -1,5 +1,5 @@
 {
-  "name": "derxen/SimpleHtmlElement",
+  "name": "derxen/simple-html-element",
   "type": "PHP Class",
   "description": "Handle HTML elements as an object with optional nodes",
   "license": "GNU GENERAL PUBLIC LICENSE Version 3",
