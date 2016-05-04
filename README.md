@@ -24,7 +24,7 @@ SimpleHtmlElement has been made to make your work easier. Here is an example:
 
 Create html root.
 ```
-$html       = new \SimpleHtmlElement();
+$html       = new derxen\SimpleHtmlElement();
 ```
 
 We define some table headers.
