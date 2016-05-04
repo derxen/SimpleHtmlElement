@@ -1,8 +1,8 @@
 {
   "name": "derxen/simple-html-element",
-  "type": "PHP Class",
+  "type": "php-class",
   "description": "Handle HTML elements as an object with optional nodes",
-  "license": "GNU GENERAL PUBLIC LICENSE Version 3",
+  "license": "GPL-3.0",
   "authors": [
     {
       "name": "Dian Derksen",
