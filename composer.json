@@ -1,0 +1,17 @@
+{
+  "name": "derxen/SimpleHtmlElement",
+  "type": "PHP Class",
+  "description": "Handle HTML elements as an object with optional nodes",
+  "license": "GNU GENERAL PUBLIC LICENSE Version 3",
+  "authors": [
+    {
+      "name": "Dian Derksen",
+      "email": "dian.derksen@futureof.finance",
+      "homepage": "http://www.futureof.finance",
+      "role": "Developer / Accountmanager"
+    }
+  ],
+  "require": {
+    "php": ">=5.2.0"
+  }
+}
