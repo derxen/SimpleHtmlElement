@@ -27,12 +27,28 @@ class SimpleHtmlElement
      * @param null $content
      */
     function __construct($tag = null, $attributes = [], $content = null) {
-        $this->tag          = $tag;
-        $this->content      = $content;
-        $this->attributes   = $attributes;
-        $this->nodes        = [];
+        $this->tag              = $tag;
+        $this->content          = $content;
+        $this->attributes       = $attributes;
 
-        $this->singles      = ['input', 'br', 'link', 'img', 'meta', 'area', 'base', 'col', 'command', 'embed', 'hr', 'param', 'source'];
+        /**
+         * Set attributes as content if string is given
+         */
+        if(!is_array($attributes)) {
+            $this->content      = $attributes;
+            $this->attributes   = $content;
+        }
+
+        /**
+         * Set attributes as content if string is given
+         */
+        if(is_array($content)) {
+            $this->attributes   = $content;
+            $this->content      = $attributes;
+        }
+
+        $this->nodes            = [];
+        $this->singles          = ['input', 'br', 'link', 'img', 'meta', 'area', 'base', 'col', 'command', 'embed', 'hr', 'param', 'source'];
     }
 
     /**
@@ -43,16 +59,17 @@ class SimpleHtmlElement
      */
     public function __call($tag, $properties) {
         try {
-            $attributes     = [];
-            $content        = null;
+            $attributes         = [];
+            $content            = null;
 
-            if (isset($properties[0]))
-                $attributes = $properties[0];
-            if (isset($properties[1]))
-                $content    = $properties[1];
+            foreach($properties as $p)
+                if(is_array($p))
+                    $attributes = array_merge($attributes, $p);
+                else
+                    $content    = $p;
 
-            $node           = new SimpleHtmlElement($tag, $attributes, $content);
-            $this->nodes[]  = $node;
+            $node               = new SimpleHtmlElement($tag, $attributes, $content);
+            $this->nodes[]      = $node;
 
             return $node;
         } catch(Exception $ex) {
@@ -68,7 +85,7 @@ class SimpleHtmlElement
         if (is_array($attr))
             $this->attributes   = array_merge($this->attributes, $attr);
         else
-            $this->attributes[]     = $attr;
+            $this->attributes[] = $attr;
     }
 
     /**
@@ -78,10 +95,11 @@ class SimpleHtmlElement
      */
     public function setContent($content = '', $override = true) {
         if ($override)
-            $this->content  = $content;
+            $this->content      = $content;
         else
-            $this->content  .= $content;
+            $this->content      .= $content;
     }
+
 
     /**
      * Return HTML of this SimpleHtmlElement
